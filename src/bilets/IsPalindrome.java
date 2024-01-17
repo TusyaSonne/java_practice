@@ -5,32 +5,26 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class IsPalindrome {
-    public static boolean isPalindrome(Queue<Integer> queue){
-        Stack<Integer> stack = new Stack<>();
-        int size = queue.size();
-        for(int i = 0; i < size; i++) {
-            int element = queue.remove();
-            stack.push(element);
-            queue.add(element);
+    public static boolean isPalindrome(Queue<Integer> q) {
+        Stack<Integer> s = new Stack<>();
+        int size = q.size();
+        boolean isPalindrom = true;
+
+        for (int i = 0; i < size; i++) {
+            int temp = q.remove();
+            q.add(temp);
+            s.push(temp);
         }
 
-        for(int i = 0; i < size / 2; i++) {
-            int front = queue.remove();
-            int back = stack.pop();
-            if (front != back) {
-                for (int j = 0; j < i; j++) {
-                    int temp = queue.remove();
-                    queue.add(temp);
-                }
-                return false;
-            }
-            queue.add(front);
-        }
         for (int i = 0; i < size; i++) {
-            int element = queue.remove();
-            queue.add(element);
+            int temp = q.remove();
+            if (temp != s.pop()) {
+                isPalindrom = false;
+            }
+            q.add(temp);
         }
-        return true;
+
+        return isPalindrom;
     }
 
     public static void main(String[] args) {
@@ -38,6 +32,7 @@ public class IsPalindrome {
         queue.add(3);
         queue.add(8);
         queue.add(17);
+        queue.add(8);
         queue.add(9);
         queue.add(17);
         queue.add(8);
