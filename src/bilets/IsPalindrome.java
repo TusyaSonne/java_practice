@@ -32,7 +32,7 @@ public class IsPalindrome {
         queue.add(3);
         queue.add(8);
         queue.add(17);
-        queue.add(8);
+        queue.add(9);
         queue.add(9);
         queue.add(17);
         queue.add(8);
